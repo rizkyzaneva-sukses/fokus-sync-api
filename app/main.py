@@ -63,6 +63,26 @@ def _startup() -> None:
 
 
 # ---------- endpoints ----------
+@app.get("/")
+def root() -> dict[str, Any]:
+    """Halaman depan API — biar gak bingung kalau domain dibuka manual."""
+    return {
+        "service": "fokus-sync",
+        "desc": "API sinkronisasi antar-PC untuk FokusApp",
+        "status": "ok",
+        "docs": "/docs",
+        "endpoints": {
+            "GET  /": "info ini",
+            "GET  /health": "cek server + DB",
+            "POST /push": "kirim record (butuh X-Sync-Key)",
+            "GET  /pull": "tarik record device lain (butuh X-Sync-Key)",
+            "GET  /devices": "daftar device terdaftar",
+            "GET  /stats": "ringkasan jumlah record",
+        },
+        "pakai_dari_app": "kamu gak perlu buka URL ini — pakai tombol ⬆Push / ⬇Pull di FokusApp",
+    }
+
+
 @app.get("/health")
 def health() -> dict[str, Any]:
     """Cek server + DB hidup. Dipakai Healthcheck & klien."""
