@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Uji end-to-end API sync di server. Semua assertion harus lulus.
 set -u
-B=http://127.0.0.1:18000
-K=testkey123
+B=http://127.0.0.1:8111
+K=test-sync-key123
 PASS=0; FAIL=0
 ck(){ if [ "$2" = "$3" ]; then echo "  PASS  $1"; PASS=$((PASS+1));
       else echo "  FAIL  $1 (dapat '$2', harusnya '$3')"; FAIL=$((FAIL+1)); fi; }

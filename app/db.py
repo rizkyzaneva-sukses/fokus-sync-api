@@ -1,5 +1,7 @@
 """Koneksi DB + skema. Postgres via psycopg3 connection pool."""
 import os
+from dotenv import load_dotenv
+load_dotenv()
 import time
 import logging
 from contextlib import contextmanager
